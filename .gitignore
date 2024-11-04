@@ -1,3 +1,6 @@
+# Build
+**/build/**
+
 # Prerequisites
 *.d
 
@@ -41,3 +44,6 @@ obj/
 *.sln
 *.vcxproj
 *.vcxproj.*
+
+# JetBrains
+.idea/
