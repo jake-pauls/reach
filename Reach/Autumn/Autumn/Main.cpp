@@ -1,13 +1,25 @@
 #include "PCH.h"
 
+#include "App.h"
+
 #include <iostream>
-#include <windows.h>
 
 #ifdef WIN32
+#include "Pillar/Win32/Win32Base.h"
+
+#include <Windows.h>
+
 _Use_decl_annotations_
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-    std::cout << "[reach] welcome to reach!" << std::endl;
+    const pillar::Win32Base* const base = new pillar::Win32Base();
+    autumn::App* app = new autumn::App();
+
+    base->Bootstrap(app, hInstance, nCmdShow);
+
+    delete base;
+    delete app;
+
     return 0;
 }
 #else

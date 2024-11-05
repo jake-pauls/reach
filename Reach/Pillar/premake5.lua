@@ -1,33 +1,27 @@
-project "Autumn"
-	kind "WindowedApp"
+project "Pillar"
+	kind "StaticLib"
 	language "C++"
 	cppdialect "C++20"
-	location "%{wks.location}/Autumn"
+	location "%{wks.location}/Pillar"
 
 	pchheader "PCH.h"
 	pchsource "PCH.cpp"
 
 	files {
 		"%{prj.location}/PCH.**",
-		"%{prj.location}/Autumn/**.cpp",
-		"%{prj.location}/Autumn/**.h",
+		"%{prj.location}/Pillar/**.cpp",
+		"%{prj.location}/Pillar/**.h",
 	}
 
 	vpaths {
 		["PCH/*"] = { "**PCH.cpp", "**PCH.h" },
-		["Source/**"] = { "Autumn/**.cpp", "Autumn/**.c" },
-		["Include/**"] = { "Autumn/**.hpp", "Autumn/**.h" },
+		["Source/**"] = { "Pillar/**.cpp", "Pillar/**.c" },
+		["Include/**"] = { "Pillar/**.hpp", "Pillar/**.h" },
 	}
 
 	includedirs {
-		"%{prj.location}/Autumn",
+		"%{prj.location}/Pillar",
 		"%{prj.location}",
-
-		"%{prj.location}/../Pillar"
-	}
-
-	links {
-		"Pillar"
 	}
 
 	filter "system:Windows"

@@ -23,4 +23,5 @@ workspace "Reach"
 		symbols "Off"
 	filter {}
 
+include "Pillar"
 include "Autumn"
