@@ -13,11 +13,11 @@ workspace "Reach"
 	filter "system:Windows"
 		defines { "WIN32" }
 	filter "configurations:Debug"
-		defines { "REACH_DEBUG" }
+		defines { "RDEBUG" }
 		runtime "Debug"
 		symbols "On"
 	filter "configurations:Release"
-		defines { "REACH_RELEASE" }
+		defines { "RRELEASE" }
 		runtime "Release"
 		optimize "On"
 		symbols "Off"

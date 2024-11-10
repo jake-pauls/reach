@@ -31,11 +31,21 @@ project "Autumn"
 	}
 
 	filter "system:Windows"
-		defines { "_CRT_SECURE_NO_WARNINGS" }
+		defines {
+			"_CRT_SECURE_NO_WARNINGS",
+			"WIN32_LEAN_AND_MEAN",
+		}
 
 		-- Force include the PCH on MSVC
 		buildoptions { "/FI PCH.h" }
 
 		-- Treat warnings as errors
 		flags { "FatalWarnings" }
+
+		links {
+			"user32", -- Win32
+			"d3d11", -- Direct3D
+			"dxgi", -- DirectX Graphics Interface
+			"d3dcompiler", -- Shader Compiler
+		}
 	filter {}

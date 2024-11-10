@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Windows.h>
+#include <windows.h>
 
 namespace pillar
 {
@@ -12,6 +12,10 @@ namespace pillar
 		Win32Base() = default;
 		~Win32Base() = default;
 
-		int Bootstrap(App* app, HINSTANCE hInstance, int nCmdShow) const;
+		/// @brief Bootstraps an application in a Win32 window.
+		/// @param app Pointer to the application instance.
+		/// @param hInstance Handle for the currently running instance.
+		/// @param nCmdShow Display code for the window being spawned.
+		i32 Bootstrap(App* app, HINSTANCE hInstance, i32 nCmdShow) const;
 	};
 }

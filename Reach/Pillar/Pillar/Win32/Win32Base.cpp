@@ -4,7 +4,7 @@
 #include "Pillar/App.h"
 #include "Win32/Win32Window.h"
 
-int pillar::Win32Base::Bootstrap(App* app, HINSTANCE hInstance, int nCmdShow) const
+i32 pillar::Win32Base::Bootstrap(App* app, HINSTANCE hInstance, i32 nCmdShow) const
 {
 	Win32Window* window = new Win32Window();
 
@@ -22,5 +22,5 @@ int pillar::Win32Base::Bootstrap(App* app, HINSTANCE hInstance, int nCmdShow) co
 
 	delete window;
 
-	return static_cast<int>(msg.wParam);
+	return static_cast<i32>(msg.wParam);
 }

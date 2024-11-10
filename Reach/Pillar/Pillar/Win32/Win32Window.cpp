@@ -8,11 +8,11 @@ namespace
 	HINSTANCE HInstance;
 	wchar_t const* WindowClassName = TEXT("Reach - DirectX11");
 
-	const unsigned int ViewportWidth = 800;
-	const unsigned int ViewportHeight = 600;
+	const u32 ViewportWidth = 800;
+	const u32 ViewportHeight = 600;
 }
 
-void pillar::Win32Window::Init(App* app, HINSTANCE hInstance, int nCmdShow)
+void pillar::Win32Window::Init(App* app, HINSTANCE hInstance, i32 nCmdShow)
 {
 	HInstance = hInstance;
 
@@ -80,6 +80,7 @@ LRESULT CALLBACK pillar::Win32Window::WindowProc(HWND hWnd, UINT message, WPARAM
 		}
 
 		app->Update();
+		app->Draw();
 	}
 	break;
 	case WM_DESTROY:

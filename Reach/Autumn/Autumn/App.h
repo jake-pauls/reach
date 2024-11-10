@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Pillar/App.h"
+#include <Pillar/App.h>
 
 namespace autumn
 {
@@ -11,5 +11,7 @@ namespace autumn
 		~App() override = default;
 
 		void Init() override;
+		void Update() override;
+		void Teardown() override;
 	};
 }
