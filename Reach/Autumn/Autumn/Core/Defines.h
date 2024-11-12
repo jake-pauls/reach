@@ -58,10 +58,12 @@
 
 	/// @brief Evaluates the provided check and logs the provided message if an assert is going to be thrown.
 	#define RVERIFY(check, message) \
-		if (!!(check)) \
 		{ \
-			RERROR(message); \
-			RASSERT(false); \
+			if (!!(check)) \
+			{ \
+				RERROR(message); \
+				RASSERT(false); \
+			} \
 		} \
 
 #else
