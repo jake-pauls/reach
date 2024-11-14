@@ -1,30 +1,27 @@
-project "Pillar"
+project "pillar"
 	kind "StaticLib"
-	language "C++"
-	cppdialect "C++20"
-	location "%{wks.location}/Pillar"
+	language "C"
+	cdialect "C17"
+	location "%{wks.location}/pillar"
 
 	pchheader "PCH.h"
-	pchsource "PCH.cpp"
+	pchsource "PCH.c"
 
 	files {
 		"%{prj.location}/PCH.**",
-		"%{prj.location}/Pillar/**.cpp",
-		"%{prj.location}/Pillar/**.h",
+		"%{prj.location}/source/**.c",
+		"%{prj.location}/include/pillar/**.h",
 	}
 
 	vpaths {
-		["PCH/*"] = { "**PCH.cpp", "**PCH.h" },
-		["Source/**"] = { "Pillar/**.cpp", "Pillar/**.c" },
-		["Include/**"] = { "Pillar/**.hpp", "Pillar/**.h" },
+		["PCH/*"] = { "**PCH.c", "**PCH.h" },
+		["source/**"] = { "source/**.c" },
+		["include/**"] = { "include/pillar/**.h" },
 	}
 
 	includedirs {
-		"%{prj.location}/Pillar",
+		"%{prj.location}/include/pillar",
 		"%{prj.location}",
-
-		-- TODO: Make a core project, so we don't have to include core headers from Autumn
-		"%{prj.location}/../Autumn"
 	}
 
 	filter "system:Windows"

@@ -1,5 +1,5 @@
 #pragma once
 
-// Local
-#include "Core/Defines.h"
-#include "Core/Types.h"
+// Pillar
+#include <pillar/core/defines.h>
+#include <pillar/core/types.h>

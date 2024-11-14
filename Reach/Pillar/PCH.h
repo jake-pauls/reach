@@ -1,5 +1,8 @@
 #pragma once
 
+// C
+#include <stdbool.h>
+
 // Win32
 #include <windows.h>
 
@@ -8,9 +11,7 @@
 #include <dxgi.h>
 #include <d3dcompiler.h>
 
-// Autumn
-#include <Autumn/Core/Defines.h>
-#include <Autumn/Core/Types.h>
-
 // Local
-#include "DX11/DX11Helpers.h"
+#include "core/defines.h"
+#include "core/types.h"
+#include "dx11/dx11_helpers.h"

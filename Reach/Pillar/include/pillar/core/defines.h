@@ -1,8 +1,6 @@
 #pragma once
 
-#include <filesystem>
-#include <iomanip>
-#include <iostream>
+#include <windows.h>
 
 #ifdef RDEBUG
 	#ifdef WIN32
@@ -24,9 +22,6 @@
 #endif
 
 #ifdef RDEBUG
-	#define __FILE_NAME__ std::filesystem::path(__FILE__).filename().string()
-	#define __FILE_NAME_C_STR__ std::filesystem::path(__FILE__).filename().string().c_str()
-
 	#ifdef WIN32
 		// TODO: find an alternate method with soft buffer maximum
 		#define __VS_PRINT__(fmt, ...) \

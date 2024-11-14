@@ -1,33 +1,33 @@
-project "Autumn"
+project "autumn"
 	kind "WindowedApp"
-	language "C++"
-	cppdialect "C++20"
-	location "%{wks.location}/Autumn"
+	language "C"
+	cdialect "C17"
+	location "%{wks.location}/autumn"
 
 	pchheader "PCH.h"
-	pchsource "PCH.cpp"
+	pchsource "PCH.c"
 
 	files {
 		"%{prj.location}/PCH.**",
-		"%{prj.location}/Autumn/**.cpp",
-		"%{prj.location}/Autumn/**.h",
+		"%{prj.location}/source/**.c",
+		"%{prj.location}/include/autumn/**.h",
 	}
 
 	vpaths {
-		["PCH/*"] = { "**PCH.cpp", "**PCH.h" },
-		["Source/**"] = { "Autumn/**.cpp", "Autumn/**.c" },
-		["Include/**"] = { "Autumn/**.hpp", "Autumn/**.h" },
+		["PCH/*"] = { "**PCH.c", "**PCH.h" },
+		["source/**"] = { "source/**.c" },
+		["include/**"] = { "include/autumn/**.h" },
 	}
 
 	includedirs {
-		"%{prj.location}/Autumn",
+		"%{prj.location}/include/autumn",
 		"%{prj.location}",
 
-		"%{prj.location}/../Pillar"
+		"%{prj.location}/../pillar/include"
 	}
 
 	links {
-		"Pillar"
+		"pillar"
 	}
 
 	filter "system:Windows"

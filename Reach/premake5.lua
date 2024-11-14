@@ -1,10 +1,10 @@
-workspace "Reach"
+workspace "reach"
 	architecture "x64"
 	configurations { "Debug", "Release" }
-	startproject "Autumn"
+	startproject "autumn"
 
-	targetdir "%{wks.location}/%{prj.name}/build/bin/%{cfg.buildcfg}"
-	objdir "%{wks.location}/%{prj.name}/build/obj/%{cfg.buildcfg}"
+	targetdir "%{wks.location}/%{prj.name}/__build/bin/%{cfg.buildcfg}"
+	objdir "%{wks.location}/%{prj.name}/__build/obj/%{cfg.buildcfg}"
 
 	vpaths {
 		["./"] = { "**premake5.lua" }
@@ -23,5 +23,7 @@ workspace "Reach"
 		symbols "Off"
 	filter {}
 
-include "Pillar"
-include "Autumn"
+-- Engine
+include "pillar"
+-- Game
+include "autumn"
