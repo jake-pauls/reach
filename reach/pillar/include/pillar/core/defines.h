@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdio.h>
+
 #include <windows.h>
 
 #ifdef RDEBUG
@@ -36,7 +38,7 @@
 		#define __PRINT__(fmt, ...) fprintf(stdout, fmt, __VA_ARGS__); 
 	#endif
 
-	#define __LOG__(level, message, ...) __PRINT__("[%s] " ## message ## "\n", level, ## __VA_ARGS__)
+	#define __LOG__(level, message, ...) __PRINT__("[%s] " message "\n", level, ## __VA_ARGS__)
 
 	#define RLOG(message, ...) __LOG__("debug", message, __VA_ARGS__)
 	#define RWARN(message, ...) __LOG__("warn", message, __VA_ARGS__)

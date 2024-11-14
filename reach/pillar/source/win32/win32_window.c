@@ -1,39 +1,38 @@
 #include "PCH.h"
 #include "win32/win32_window.h"
 
-#include "pillar_runtime.h"
+#include "pillar_app.h"
 
-void win32_window_create(Win32Window* const window, const wchar_t* const class_name, const LONG width, const LONG height)
+void win32_window_create(Win32Window* const window, const Win32WindowDesc* const desc)
 {
 	const WNDCLASS window_class = {
 		.lpfnWndProc = win32_window_wndproc,
 		.hInstance = window->h_instance,
-		.lpszClassName = class_name
+		.lpszClassName = desc->class_name
 	};
 
 	RegisterClass(&window_class);
 
 	RECT window_rect = {
-		.bottom = width,
+		.bottom = desc->width,
 		.left = 0,
-		.right = height,
+		.right = desc->height,
 		.top = 0,
 	};
 	AdjustWindowRect(&window_rect, WS_OVERLAPPEDWINDOW, FALSE);
 
-	// #nocheckin: cache a pointer on the window?
 	window->hwnd = CreateWindowEx(0,
-		class_name,
-		class_name,
+		desc->class_name,
+		desc->class_name,
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT,
 		CW_USEDEFAULT,
-		width,
-		height,
+		desc->width,
+		desc->height,
 		NULL,
 		NULL,
 		window->h_instance,
-		NULL);
+		window->lp_param);
 }
 
 void win32_window_show(const Win32Window* const window)
@@ -50,18 +49,18 @@ void win32_window_peek(LPMSG msg)
 	}
 }
 
-void win32_window_teardown(Win32Window* const window, const wchar_t* const title)
+void win32_window_destroy(Win32Window* const window, const wchar_t* const class_name)
 {
 	DestroyWindow(window->hwnd);
 	window->hwnd = NULL;
 
-	UnregisterClass(title, window->h_instance);
+	UnregisterClass(class_name, window->h_instance);
 	window->h_instance = NULL;
 }
 
 LRESULT CALLBACK win32_window_wndproc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
-	//App* app = reinterpret_cast<App*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+	PillarApp* app = (PillarApp*)(GetWindowLongPtr(hwnd, GWLP_USERDATA));
 
 	switch (message)
 	{
@@ -69,21 +68,27 @@ LRESULT CALLBACK win32_window_wndproc(HWND hwnd, UINT message, WPARAM wparam, LP
 	{
 		LPCREATESTRUCT create_struct = (LPCREATESTRUCT)lparam;
 		SetWindowLongPtr(hwnd, GWLP_USERDATA, (LONG_PTR)create_struct->lpCreateParams);
+		break;
 	}
-	break;
 	case WM_PAINT:
 	{
-		//pillar_runtime_update();
-		//pillar_runtime_draw();
-	}
-	break;
+		if (app)
+		{
+			app->lifecycle_hook->update();
+		}
+		break;
+	} 
 	case WM_DESTROY:
 	case WM_CLOSE:
+	{
 		PostQuitMessage(0);
 		break;
+	}
 	default:
+	{
 		// Handle other window events if we don't do anything
 		return DefWindowProc(hwnd, message, wparam, lparam);
+	}
 	}
 
 	return 0;
