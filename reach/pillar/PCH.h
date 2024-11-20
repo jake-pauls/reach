@@ -3,9 +3,6 @@
 // C
 #include <stdbool.h>
 
-// Win32
-#include <windows.h>
-
 // Direct3D
 #include <d3d11.h>
 #include <dxgi.h>

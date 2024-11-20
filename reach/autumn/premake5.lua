@@ -54,7 +54,6 @@ project "autumn"
 		flags { "FatalWarnings" }
 
 		links {
-			"user32", -- Win32
 			"d3d11", -- Direct3D
 			"dxgi", -- DirectX Graphics Interface
 			"d3dcompiler", -- Shader Compiler
