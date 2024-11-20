@@ -23,7 +23,9 @@ workspace "reach"
 		symbols "Off"
 	filter {}
 
--- Engine
+-- third_party config
+include "third_party/config.lua"
+-- engine
 include "pillar"
--- Game
+-- game
 include "autumn"

@@ -22,12 +22,23 @@ project "autumn"
 	includedirs {
 		"%{prj.location}/include/autumn",
 		"%{prj.location}",
+		"%{prj.location}/../pillar/include",
 
-		"%{prj.location}/../pillar/include"
+		"%{config.pkg.SDL.include}",
+	}
+
+	libdirs {
+		"%{config.pkg.SDL.libdir}",
 	}
 
 	links {
-		"pillar"
+		"pillar",
+
+		"%{config.pkg.SDL.link}",
+	}
+
+	postbuildcommands {
+		"{COPY} %{config.pkg.SDL.dlldir}/*.dll $(OutDir)",
 	}
 
 	filter "system:Windows"

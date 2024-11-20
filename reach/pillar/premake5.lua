@@ -22,6 +22,8 @@ project "pillar"
 	includedirs {
 		"%{prj.location}/include/pillar",
 		"%{prj.location}",
+
+		"%{config.pkg.SDL.include}"
 	}
 
 	filter "system:Windows"

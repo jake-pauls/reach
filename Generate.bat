@@ -4,7 +4,7 @@ if "%~1" == "--clean" goto clean
 
 :generate
 echo [%~nx0] Generating projects...
-call premake5.exe vs2022 --file="reach/premake5.lua"
+call .\reach\third_party\premake\premake5.exe vs2022 --file="reach/premake5.lua"
 goto :eof
 
 :clean

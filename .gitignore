@@ -47,3 +47,8 @@ obj/
 
 # JetBrains
 .idea/
+
+# third_party exemptions
+!reach/third_party/**/*.exe
+!reach/third_party/**/*.dll
+!reach/third_party/**/*.lib
