@@ -20,10 +20,10 @@ project "pillar"
 	}
 
 	includedirs {
-		"%{prj.location}/include/pillar",
+		"%{prj.location}/include",
 		"%{prj.location}",
 
-		"%{config.pkg.SDL.include}"
+		"%{third_party.pkgs.SDL.include}"
 	}
 
 	filter "system:Windows"

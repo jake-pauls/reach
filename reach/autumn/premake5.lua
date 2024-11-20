@@ -20,25 +20,25 @@ project "autumn"
 	}
 
 	includedirs {
-		"%{prj.location}/include/autumn",
+		"%{prj.location}/include",
 		"%{prj.location}",
 		"%{prj.location}/../pillar/include",
 
-		"%{config.pkg.SDL.include}",
+		"%{third_party.pkgs.SDL.include}",
 	}
 
 	libdirs {
-		"%{config.pkg.SDL.libdir}",
+		"%{third_party.pkgs.SDL.libdir}",
 	}
 
 	links {
 		"pillar",
 
-		"%{config.pkg.SDL.link}",
+		"%{third_party.pkgs.SDL.link}",
 	}
 
 	postbuildcommands {
-		"{COPY} %{config.pkg.SDL.dlldir}/*.dll $(OutDir)",
+		"{COPY} %{third_party.pkgs.SDL.dlldir}/*.dll $(OutDir)",
 	}
 
 	filter "system:Windows"

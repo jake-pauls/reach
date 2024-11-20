@@ -23,8 +23,8 @@ workspace "reach"
 		symbols "Off"
 	filter {}
 
--- third_party config
-include "third_party/config.lua"
+-- third_party packages
+include "third_party/pkgs.lua"
 -- engine
 include "pillar"
 -- game

@@ -12,6 +12,6 @@
 #include <d3dcompiler.h>
 
 // Local
-#include "core/defines.h"
-#include "core/types.h"
-#include "dx11/dx11_helpers.h"
+#include "pillar/core/defines.h"
+#include "pillar/core/types.h"
+#include "pillar/dx11/dx11_helpers.h"

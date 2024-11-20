@@ -1,7 +1,7 @@
 #include "PCH.h"
-#include "win32/win32_window.h"
+#include "pillar/win32/win32_window.h"
 
-#include "pillar_app.h"
+#include "pillar/pillar_app.h"
 
 void win32_window_create(Win32Window* const window, const Win32WindowDesc* const desc)
 {

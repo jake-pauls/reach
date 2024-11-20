@@ -1,13 +1,13 @@
 #include "PCH.h"
 
-#include "autumn_app.h"
+#include "autumn/autumn_app.h"
+#include "pillar/pillar_app.h"
+#include "pillar/pillar_base.h"
 
-#ifdef WIN32
-#include <pillar/pillar_app.h>
-#include <pillar/win32/win32_base.h>
+#define SDL_MAIN_HANDLED
+#include <SDL3/SDL_main.h>
 
-_Use_decl_annotations_
-int WINAPI WinMain(HINSTANCE h_instance, HINSTANCE h_prev_instance, LPSTR lp_cmd_line, i32 n_cmd_show)
+int main(int argc, char* argv[])
 {
     PillarAppLifecycleHook lifecycle_hook = {
         .init = &autumn_app_init,
@@ -15,14 +15,18 @@ int WINAPI WinMain(HINSTANCE h_instance, HINSTANCE h_prev_instance, LPSTR lp_cmd
         .destroy = &autumn_app_destroy,
     };
 
-    win32_base_bootstrap(h_instance, n_cmd_show, &lifecycle_hook);
+    return pillar_base_bootstrap(&lifecycle_hook);
+}
 
-    return 0;
+
+#ifdef WIN32
+_Use_decl_annotations_
+int WINAPI WinMain(_In_ HINSTANCE h_instance, 
+    _In_opt_ HINSTANCE h_prev_instance, 
+    _In_ LPSTR lp_cmd_line, 
+    _In_ i32 n_cmd_show)
+{
+    return main(__argc, __argv);
 }
 #else
-int main(int argc, char* argv[])
-{
-    std::cout << "[reach] platform not supported!" << std::endl;
-    return 0;
-}
 #endif

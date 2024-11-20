@@ -1,7 +1,7 @@
 #include "PCH.h"
-#include "autumn_app.h"
+#include "autumn/autumn_app.h"
 
-#include <pillar/pillar_app.h>
+#include "pillar/pillar_app.h"
 
 void autumn_app_init()
 {

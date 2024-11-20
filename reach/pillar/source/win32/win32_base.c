@@ -1,12 +1,12 @@
 #include "PCH.h"
-#include "win32/win32_base.h"
+#include "pillar/win32/win32_base.h"
 
-#include "pillar_app.h"
-#include "win32/win32_window.h"
+#include "pillar/pillar_app.h"
+#include "pillar/win32/win32_window.h"
 
 static const wchar_t* const window_class_name = TEXT("Reach - DX11");
-static const LONG viewport_width = 800;
-static const LONG viewport_height = 600;
+static const LONG viewport_width = 640;
+static const LONG viewport_height = 480;
 
 i32 win32_base_bootstrap(HINSTANCE h_instance, i32 n_cmd_show, PillarAppLifecycleHook* lifecycle_hook)
 {

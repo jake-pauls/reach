@@ -1,13 +1,10 @@
-config = {
-    pkg = {
-        include = "",
-        libdir = "",
-        dlldir = "",
-        link = "",
-    },
+third_party = {
+    pkgs = {},
 }
 
-config.pkg["SDL"] = {
+-- package definitions
+
+third_party.pkgs["SDL"] = {
     include = "%{wks.location}/third_party/SDL/3.16/include",
     libdir = "%{wks.location}/third_party/SDL/3.16/lib",
     dlldir = "%{wks.location}/third_party/SDL/3.16/dll",
